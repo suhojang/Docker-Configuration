@@ -1,0 +1,9 @@
+version: '3.3'
+
+services:
+  server:
+    build: ./server
+    image: relay-agent-be
+  db:
+    build: ./db
+    image: relay-agent-be-db

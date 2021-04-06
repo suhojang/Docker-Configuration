@@ -1,0 +1,25 @@
+1. docker-compose.yml이 있는 경로로 이동
+  - ex) cd /app/docker/build
+  
+2. docker-compose.yml 열기
+  - vi docker-compose.yml
+
+3. 이미지명 수정
+  - image: [생성할 이미지명]
+  
+4. 저장
+  - wq!  
+    
+5. docker-compose 실행
+  - docker-compose build
+  
+6. docker image생성 확인
+  - docker images
+  
+7. docker repository 올리기
+  - docker login docker-repository.scraping.co.kr:5000
+  - 아이디 : kwic
+  - 비밀번호 : kwic5539
+  - docker tag [생성 된 이미지명] docker-repository.scraping.co.kr:5000/relay-agent-be
+  - docker push docker-repository.scraping.co.kr:5000/relay-agent-be
+   

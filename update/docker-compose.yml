@@ -1,0 +1,48 @@
+version: '3.3'
+networks:
+  relaynet:
+    ipam:
+      config:
+        - subnet: 172.19.0.0/21
+
+services:
+  db:
+    build: ./db
+    container_name: agentapi-db
+    image: relay-agent-be-db
+    networks: 
+      relaynet:
+        ipv4_address: 172.19.0.7
+    volumes:
+      - /root/data/mariadb:/var/lib/mysql/:rw
+    environment:
+      - MYSQL_ROOT_PASSWORD=kwicDB5539!
+      - MYSQL_DATABASE=agentdb
+
+  server:
+    build: ./server
+    container_name: agentapi-server
+    image: relay-agent-be:1.2.1
+    ports:
+      - 9778:9778
+    expose:
+      - 9778
+    networks: 
+      relaynet:
+        ipv4_address: 172.19.0.8
+    depends_on:
+      - db
+
+  proxy:
+    container_name: relayproxy
+    image: relayproxy:1.0.0
+    environment:
+      - FRONTAPI_URL=http://192.168.55.100/api
+      - AGENT_BE=http://172.19.0.8:9778/rest
+      - PROXY_CALLBACKURL=http://[webhook-url]/CON_ITR_02000A/
+    ports:
+      - 5000:5000
+    networks:
+      relaynet:
+        ipv4_address: 172.19.0.9
+

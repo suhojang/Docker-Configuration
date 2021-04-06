@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+  db:
+    build: ./db
+    container_name: relay-agent-be-db
+    image: relay-agent-be-db
+    ports:
+      - 13306:3306
+    volumes:
+      - /root/data/mariadb:/var/lib/mysql/:rw
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:rw
+    environment:
+      - MYSQL_ROOT_PASSWORD=kwicDB5539!
+      - MYSQL_DATABASE=agentdb
+      
+
+  server:
+    build: ./server
+    container_name: relay-agent-be
+    image: relay-agent-be
+    ports:
+      - 9778:9778
+    expose:
+      - 9778

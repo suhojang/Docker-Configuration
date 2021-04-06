@@ -1,0 +1,4 @@
+1. docker-compose.yml이 있는 경로로 이동
+  - ex) cd /app/docker/update
+2. docker-compose 실행
+  - docker-compose up -d

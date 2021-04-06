@@ -1,0 +1,23 @@
+Description=Apache Tomcat Web Application Container
+After=syslog.target network.target
+
+[Service]
+Type=forking
+
+Environment="JAVA_HOME=/app/jdk1.8.0_241"
+Environment="CATALINA_PID=/app/tomcat9/temp/tomcat.pid"
+Environment="CATALINA_HOME=/app/tomcat9"
+Environment="CATALINA_BASE=/app/tomcat9"
+Environment="CATALINA_TMPDIR=/app/tomcat9/temp"
+Environment="CATALINA_OPTS=-Xms256M -Xmx512M -server -XX:+UseParallelGC"
+Environment="JAVA_OPTS=-Djava.security.egd=file:///dev/urandom"
+Environment="CLASSPATH="/app/tomcat9/bin/bootstrap.jar:/app/tomcat9/bin/tomcat-juli.jar"
+
+ExecStart=/app/tomcat9/bin/startup.sh
+ExecStop=/app/tomcat9/bin/shutdown.sh
+
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
