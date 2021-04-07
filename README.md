@@ -47,6 +47,25 @@
   2) docker-compose update 실행
     - docker-compose up -d
 ```
+
+### ETC - Dokcer Container 실행
+```
+
+1. Server
+  - docker container run --privileged -i -t -d -p [public port:private port] \
+    --name [container name] \
+    [image name] init
+
+2. Database
+  - docker container run --privileged -i -t -d -p [public port:private port] \ 
+    -e MYSQL_ROOT_PASSWORD=[database password] \
+    -v [database volume server path]:[container database data path]:rw \
+    --name [container name] \
+    [image name]
+    
+```
+
+
 ```
 git clone https://github.com/suhojang/Docker-Configuration.git
 ```
