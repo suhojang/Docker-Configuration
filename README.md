@@ -1,13 +1,13 @@
-# Docker 서버환경 구성
+### Docker 서버환경 구성
 
-### 프로젝트 계획 이유
+#### 프로젝트 계획 이유
 > Docker로 Web Server환경을 손쉽게 하기 위해 DokcerFile/docker-compose.yml 설정 파일 구성
 
-### 구성
+#### 구성
 > JDK8, Tomcat9, Mysql, CentOS
 > 원하시는 Server Configuration 파일들을 build, init, update 경로에 적용하시고 아래 사용방법으로 처리하시면 됩니다.
 
-### 사용방법
+#### 사용방법
 ```
 1. bulid(초기 빌드)
   1. docker-compose.yml이 있는 경로로 이동
@@ -48,7 +48,7 @@
     - docker-compose up -d
 ```
 
-### ETC - Dokcer Container 실행
+#### ETC - Dokcer Container 실행
 ```
 
 1. Server
