@@ -52,12 +52,12 @@
 ```
 
 1. Server
-  - docker container run --privileged -i -t -d -p [public port:private port] \
+  - docker container run --privileged -i -t -d -p [server port:container port] \
     --name [container name] \
     [image name] init
 
 2. Database
-  - docker container run --privileged -i -t -d -p [public port:private port] \ 
+  - docker container run --privileged -i -t -d -p [server port:container port] \ 
     -e MYSQL_ROOT_PASSWORD=[database password] \
     -v [database volume server path]:[container database data path]:rw \
     --name [container name] \
